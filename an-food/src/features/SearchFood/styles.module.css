@@ -1,0 +1,61 @@
+.mainSearch {
+  position: absolute;
+  top: -250px;
+  width: 100%;
+  display: flex;
+  z-index: 10;
+}
+
+.container {
+  width: 360px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 24px 24px 24px;
+  border: 1px solid #e5e9f0;
+}
+.dsMobile {
+  margin-top: 130px;
+}
+.tx-1 {
+  font-size: 1.5rem;
+  line-height: 1.33333333;
+  font-weight: 500;
+}
+
+.tx-sm {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.chef {
+  top: 105px;
+  right: 25px;
+  width: 150px;
+  position: absolute;
+  z-index: 10;
+}
+@media screen and (max-width: 750px) {
+  .tx-1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .chef{
+    top: -38px;
+    right: 25px;
+    width: 140px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .tx-1 {
+    font-size: 1.8rem;
+    margin-right: 0px;
+  }
+
+}
+
+.base-tx {
+  margin-bottom: 32px;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+

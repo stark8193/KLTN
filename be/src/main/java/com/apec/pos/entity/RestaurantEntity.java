@@ -37,10 +37,6 @@ public class RestaurantEntity extends BaseEntity  {
 
     private String imgRes;
 
-    @OneToMany(mappedBy = "restaurantEntity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "topping-res")
-    private List<ToppingEntity> toppingEntityList;
-
     @OneToMany(mappedBy = "restaurantEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "food-res")
     private List<FoodEntity> foodEntities;
@@ -55,6 +51,38 @@ public class RestaurantEntity extends BaseEntity  {
         this.distance = distance;
         this.phoneNumber = phoneNumber;
         this.imgRes = imgRes;
+        this.foodEntities = foodEntities;
+    }
+
+    public Double getStar() {
+        return star;
+    }
+
+    public void setStar(Double star) {
+        this.star = star;
+    }
+
+    public String getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(String timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public String getTimeClose() {
+        return timeClose;
+    }
+
+    public void setTimeClose(String timeClose) {
+        this.timeClose = timeClose;
+    }
+
+    public List<FoodEntity> getFoodEntities() {
+        return foodEntities;
+    }
+
+    public void setFoodEntities(List<FoodEntity> foodEntities) {
         this.foodEntities = foodEntities;
     }
 

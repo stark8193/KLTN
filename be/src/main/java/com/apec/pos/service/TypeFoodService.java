@@ -1,30 +1,24 @@
 package com.apec.pos.service;
 
-import java.io.IOException;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import com.apec.pos.dto.FoodDto.FoodRecommendDto;
-import com.apec.pos.dto.ToppingDTO.Item;
-import com.apec.pos.dto.ToppingDTO.ToppingResponse;
 import com.apec.pos.dto.TypeDto.DetailTypeFood;
-import com.apec.pos.entity.FoodEntity;
-import com.apec.pos.entity.ToppingEntity;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
-
 import com.apec.pos.dto.TypeDto.TypeResponseAdmin;
 import com.apec.pos.dto.TypeDto.TypefoodResponseData;
 import com.apec.pos.dto.TypeDto.UpdateTypeRequest;
 import com.apec.pos.dto.restaurantDto.SearchForm;
+import com.apec.pos.entity.FoodEntity;
 import com.apec.pos.entity.TypeFoodEntity;
 import com.apec.pos.repository.TypeFoodRepository;
 import com.apec.pos.service.serviceInterface.TypeFoodInterface;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class TypeFoodService extends BaseService<TypeFoodRepository, TypeFoodEntity, Integer> implements TypeFoodInterface {
@@ -164,17 +158,17 @@ public class TypeFoodService extends BaseService<TypeFoodRepository, TypeFoodEnt
         for (FoodEntity x:foodEntities
              ) {
             Gson gson = new Gson();
-            List<ToppingResponse> toppingResponses = new ArrayList<>();
-            for (ToppingEntity y:x.getRestaurantEntity().getToppingEntityList()
-            ) {
-                ToppingResponse toppingResponse= ToppingResponse.builder()
-                        .id(y.getId())
-                        .title(y.getTitle())
-                        .requi(y.getRequi())
-                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
-                        .build();
-                toppingResponses.add(toppingResponse);
-            }
+//            List<ToppingResponse> toppingResponses = new ArrayList<>();
+//            for (ToppingEntity y:x.getRestaurantEntity().getToppingEntityList()
+//            ) {
+//                ToppingResponse toppingResponse= ToppingResponse.builder()
+//                        .id(y.getId())
+//                        .title(y.getTitle())
+//                        .requi(y.getRequi())
+//                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
+//                        .build();
+//                toppingResponses.add(toppingResponse);
+//            }
             FoodRecommendDto temp = new FoodRecommendDto(
                     x.getId(),
                     x.getFoodName(),
@@ -189,7 +183,7 @@ public class TypeFoodService extends BaseService<TypeFoodRepository, TypeFoodEnt
                     x.getRestaurantEntityId(),
                     x.getStatus(),
                     x.getRestaurantEntity().getDistance(),
-                    toppingResponses,
+//                    toppingResponses,
                     x.getTypeFoodEntity().getNameType()
             );
             foodRecommendDtos.add(temp);

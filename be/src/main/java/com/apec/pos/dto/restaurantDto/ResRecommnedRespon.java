@@ -1,13 +1,10 @@
 package com.apec.pos.dto.restaurantDto;
 
 import com.apec.pos.dto.FoodDto.FoodRecommendDto;
-import com.apec.pos.dto.ToppingDTO.Item;
-import com.apec.pos.entity.ToppingEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.apec.pos.dto.ToppingDTO.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class ResRecommnedRespon {
     private String imgRes;
     private String detail;
     private Double star;
-    private List<ToppingResponse> toppingEntityList;
+//    private List<ToppingResponse> toppingEntityList;
     private List<FoodRecommendDto> foodRecommendDtos;
 
 

@@ -59,6 +59,14 @@ public class FoodEntity extends BaseEntity implements Serializable {
 
     }
 
+    public List<BillDetailEntity> getBillDetailEntities() {
+        return billDetailEntities;
+    }
+
+    public void setBillDetailEntities(List<BillDetailEntity> billDetailEntities) {
+        this.billDetailEntities = billDetailEntities;
+    }
+
     public String getImgFood() {
         return imgFood;
     }

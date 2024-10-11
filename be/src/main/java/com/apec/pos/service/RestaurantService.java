@@ -1,21 +1,17 @@
 package com.apec.pos.service;
 
 import com.apec.pos.dto.FoodDto.FoodRecommendDto;
-import com.apec.pos.dto.ToppingDTO.Item;
-import com.apec.pos.dto.ToppingDTO.ToppingResponse;
 import com.apec.pos.dto.restaurantDto.ResRecommnedRespon;
 import com.apec.pos.dto.restaurantDto.ResRequest;
 import com.apec.pos.dto.restaurantDto.ResponsePaging;
 import com.apec.pos.dto.restaurantDto.SearchForm;
 import com.apec.pos.entity.FoodEntity;
 import com.apec.pos.entity.RestaurantEntity;
-import com.apec.pos.entity.ToppingEntity;
 import com.apec.pos.repository.FoodRepository;
 import com.apec.pos.repository.RestaurantRepository;
 import com.apec.pos.repository.ToppingRepository;
 import com.apec.pos.service.serviceInterface.RestaurantInterface;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -82,23 +78,23 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
         for (RestaurantEntity x : restaurantEntities) {
             ResRecommnedRespon temp = new ResRecommnedRespon(x.getId(), x.getRestaurantName(), x.getQuantitySold(), x.getDistance(), null, null, x.getImgRes());
                     Gson gson = new Gson();
-            List<ToppingResponse> toppingResponses = new ArrayList<>();
-            for (ToppingEntity y:x.getToppingEntityList()
-            ) {
-                ToppingResponse toppingResponse= ToppingResponse.builder()
-                        .id(y.getId())
-                        .title(y.getTitle())
-                        .requi(y.getRequi())
-                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
-                        .build();
-                toppingResponses.add(toppingResponse);
-            }
+//            List<ToppingResponse> toppingResponses = new ArrayList<>();
+//            for (ToppingEntity y:x.getToppingEntityList()
+//            ) {
+//                ToppingResponse toppingResponse= ToppingResponse.builder()
+//                        .id(y.getId())
+//                        .title(y.getTitle())
+//                        .requi(y.getRequi())
+//                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
+//                        .build();
+//                toppingResponses.add(toppingResponse);
+//            }
 
             temp.setDetail(x.getDetail());
             temp.setStar(x.getStar());
             temp.setTimeClose(x.getTimeClose());
             temp.setTimeStart(x.getTimeStart());
-            temp.setToppingEntityList(toppingResponses);
+//            temp.setToppingEntityList(toppingResponses);
             resRecommnedRespons.add(temp);
         }
         return resRecommnedRespons;
@@ -111,14 +107,14 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
         if (restaurantEntity==null){
             return null;
         }
-        List<ToppingEntity> toppingEntityList = restaurantEntity.getToppingEntityList();
+//        List<ToppingEntity> toppingEntityList = restaurantEntity.getToppingEntityList();
         List<FoodEntity> foodEntities =restaurantEntity.getFoodEntities();
         if (restaurantEntity == null){
             return null;
         }
         List<FoodRecommendDto> foodRecommendDtos = new ArrayList<>();
         Gson gson = new Gson();
-        List<ToppingResponse> toppingResponses = new ArrayList<>();
+//        List<ToppingResponse> toppingResponses = new ArrayList<>();
 
         for (FoodEntity x: foodEntities
              ) {
@@ -136,22 +132,22 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
                     x.getRestaurantEntityId(),
                     x.getStatus(),
                     x.getRestaurantEntity().getDistance(),
-                    null,
+//                    null,
                     x.getTypeFoodEntity().getNameType()
             );
             foodRecommendDtos.add(temp);
         }
 
-        for (ToppingEntity y:toppingEntityList
-        ) {
-            ToppingResponse toppingResponse= ToppingResponse.builder()
-                    .id(y.getId())
-                    .title(y.getTitle())
-                    .requi(y.getRequi())
-                    .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
-                    .build();
-            toppingResponses.add(toppingResponse);
-        }
+//        for (ToppingEntity y:toppingEntityList
+//        ) {
+//            ToppingResponse toppingResponse= ToppingResponse.builder()
+//                    .id(y.getId())
+//                    .title(y.getTitle())
+//                    .requi(y.getRequi())
+//                    .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
+//                    .build();
+//            toppingResponses.add(toppingResponse);
+//        }
         ResRecommnedRespon result = new ResRecommnedRespon(
                 restaurantEntity.getId(),
                 restaurantEntity.getRestaurantName(),
@@ -164,7 +160,7 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
                 restaurantEntity.getImgRes(),
                 restaurantEntity.getDetail(),
                 restaurantEntity.getStar(),
-                toppingResponses,
+//                toppingResponses,
                 foodRecommendDtos
         );
         return result;
@@ -247,17 +243,17 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
         for (RestaurantEntity x : restaurantEntities
         ) {
             //convert topping
-            List<ToppingResponse> toppingResponses = new ArrayList<>();
-            for (ToppingEntity y:x.getToppingEntityList()
-                 ) {
-                ToppingResponse toppingResponse= ToppingResponse.builder()
-                        .id(y.getId())
-                        .title(y.getTitle())
-                        .requi(y.getRequi())
-                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
-                        .build();
-                toppingResponses.add(toppingResponse);
-            }
+//            List<ToppingResponse> toppingResponses = new ArrayList<>();
+//            for (ToppingEntity y:x.getToppingEntityList()
+//                 ) {
+//                ToppingResponse toppingResponse= ToppingResponse.builder()
+//                        .id(y.getId())
+//                        .title(y.getTitle())
+//                        .requi(y.getRequi())
+//                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
+//                        .build();
+//                toppingResponses.add(toppingResponse);
+//            }
 
             ResRecommnedRespon temp = new ResRecommnedRespon();
             temp.setAddress(x.getAddress());
@@ -271,7 +267,7 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
             temp.setTimeStart(x.getTimeStart());
             temp.setTimeClose(x.getTimeClose());
             temp.setStar(x.getStar());
-            temp.setToppingEntityList(toppingResponses);
+//            temp.setToppingEntityList(toppingResponses);
             result.add(temp);
         }
         ResponsePaging responsePaging = new ResponsePaging();
@@ -290,17 +286,17 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
 
             //convert topping
             Gson gson = new Gson();
-            List<ToppingResponse> toppingResponses = new ArrayList<>();
-            for (ToppingEntity y:x.getRestaurantEntity().getToppingEntityList()
-            ) {
-                ToppingResponse toppingResponse= ToppingResponse.builder()
-                        .id(y.getId())
-                        .title(y.getTitle())
-                        .requi(y.getRequi())
-                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
-                        .build();
-                toppingResponses.add(toppingResponse);
-            }
+//            List<ToppingResponse> toppingResponses = new ArrayList<>();
+//            for (ToppingEntity y:x.getRestaurantEntity().getToppingEntityList()
+//            ) {
+//                ToppingResponse toppingResponse= ToppingResponse.builder()
+//                        .id(y.getId())
+//                        .title(y.getTitle())
+//                        .requi(y.getRequi())
+//                        .itemList(gson.fromJson(y.getItems(),new TypeToken<List<Item>>(){}.getType()))
+//                        .build();
+//                toppingResponses.add(toppingResponse);
+//            }
 
             FoodRecommendDto temp = new FoodRecommendDto(x.getId(),
                     x.getFoodName(),
@@ -315,7 +311,7 @@ public class RestaurantService extends BaseService<RestaurantRepository, Restaur
                     x.getRestaurantEntityId(),
                     x.getStatus(),
                     restaurantEntity.getDistance(),
-                    toppingResponses,
+//                    toppingResponses,
                     x.getTypeFoodEntity().getNameType());
             foodRecommendDtos.add(temp);
         }

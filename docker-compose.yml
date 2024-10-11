@@ -68,8 +68,6 @@ services:
     - "80:80"
   networks:
     - testNetwork
-  volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf
   depends_on:
     - be
     - an_food

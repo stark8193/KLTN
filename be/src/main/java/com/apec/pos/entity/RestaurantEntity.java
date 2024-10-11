@@ -37,7 +37,7 @@ public class RestaurantEntity extends BaseEntity  {
 
     private String imgRes;
 
-    @OneToMany(mappedBy = "restaurantEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurantEntity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "topping-res")
     private List<ToppingEntity> toppingEntityList;
 

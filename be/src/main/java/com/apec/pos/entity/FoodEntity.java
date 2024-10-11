@@ -1,18 +1,14 @@
 package com.apec.pos.entity;
 
-import java.io.Serializable;
-
-import java.util.List;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -50,7 +46,7 @@ public class FoodEntity extends BaseEntity implements Serializable {
     @Column(name = "restaurantEntityId")
     private Integer restaurantEntityId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference(value = "food-res")
     @JoinColumn(name = "restaurantEntityId", insertable = false, updatable = false)
     private RestaurantEntity restaurantEntity;

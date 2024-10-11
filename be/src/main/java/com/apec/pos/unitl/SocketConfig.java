@@ -39,9 +39,8 @@ public class SocketConfig implements WebSocketMessageBrokerConfigurer {
                         "http://127.0.0.1:5173",
                         "http://localhost:5173",
                         "http://14.225.206.173:8081",
-                        "http://54.254.206.236:5173",
-                        "http://54.254.206.236:5174",
-                        "http://54.254.206.236:8081")
+                        "http://13.229.88.151:5173")
+//                        "http://54.254.206.236:5174")
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }

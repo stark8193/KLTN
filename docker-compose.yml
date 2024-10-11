@@ -38,7 +38,7 @@ services:
       context: ./an-food
       dockerfile: Dockerfile
     image: annguyen2003/an-food:0.0.4 
-    container_name: an-food
+    container_name: an_food
     ports:
       - "5173:5173"
     networks:
@@ -52,7 +52,7 @@ services:
       context: ./admin-luan-food
       dockerfile: Dockerfile
     image: annguyen2003/admin-luan-food:0.0.4
-    container_name: admin-luan-food
+    container_name: admin_luan_food
     ports:
       - "5174:5174"
     networks:

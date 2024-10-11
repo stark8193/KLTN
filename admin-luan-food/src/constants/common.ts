@@ -1,1 +1,1 @@
-export const STATIC_HOST = "http://54.254.206.236:8081/"
+export const STATIC_HOST = "http://13.229.88.151:8081/"

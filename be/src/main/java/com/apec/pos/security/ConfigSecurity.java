@@ -65,9 +65,9 @@ public class ConfigSecurity {
                 "http://127.0.0.1:5173",
                 "http://localhost:5174",
                 "http://14.225.206.173:8081",
-                "http://54.169.243.65:8081",
-                "http://54.169.243.65:5173",
-                "http://54.169.243.65:5174"
+                "http://13.212.13.111:8081",
+                "http://13.212.13.111:5173",
+                "http://13.212.13.111:5174"
         ));
         // Cho phép gửi credentials
         corsConfig.setAllowCredentials(true);

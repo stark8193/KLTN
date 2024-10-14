@@ -61,13 +61,13 @@ public class ConfigSecurity {
         CorsConfiguration corsConfig = new CorsConfiguration();
         // Cho phép các nguồn gốc cụ thể (không sử dụng *)
         corsConfig.setAllowedOrigins(Arrays.asList(
-                "http://localhost:5173",
+                "http://localhost:5175",
                 "http://127.0.0.1:5173",
-                "http://localhost:5174",
-                "http://14.225.206.173:8081",
-                "http://13.212.13.111:8081",
-                "http://13.212.13.111:5173",
-                "http://13.212.13.111:5174"
+                "http://localhost:5176",
+                "http://14.225.206.173:8082",
+                "http://13.212.13.111:8082",
+                "http://13.212.13.111:5175",
+                "http://13.212.13.111:5176"
         ));
         // Cho phép gửi credentials
         corsConfig.setAllowCredentials(true);
